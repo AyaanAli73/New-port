@@ -430,6 +430,71 @@
         .wc-icon { margin-bottom: 15px; color: var(--text); transition: 0.2s; }
         .weapon-card:hover .wc-icon { transform: scale(1.2) rotate(10deg); }
 
+        /* --- SERVICES SECTION (NEW) --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: var(--surface);
+            border: var(--border-width) solid var(--border);
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .service-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0px var(--border);
+            background: var(--text);
+        }
+        
+        /* Change text color on hover */
+        .service-card:hover h3, 
+        .service-card:hover p {
+            color: var(--surface);
+        }
+        
+        .service-card:hover .service-icon {
+            color: var(--caution);
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .service-icon {
+            color: var(--text);
+            transition: 0.3s;
+        }
+
+        .service-num {
+            font-family: 'Space Mono';
+            font-weight: 900;
+            font-size: 3rem;
+            color: rgba(0,0,0,0.1);
+            line-height: 1;
+        }
+        .service-card:hover .service-num { color: rgba(255,255,255,0.2); }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
         /* --- PROJECTS --- */
         .work-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -484,41 +549,45 @@
             box-shadow: 2px 2px 0 #ccc;
         }
 
-        /* --- FOOTER --- */
+        /* --- FOOTER & SOCIALS --- */
         footer {
             background: var(--text); color: var(--surface);
             padding: 100px 0; text-align: center;
             border-top: var(--border-width) solid var(--border);
-            overflow: hidden; /* Prevent X scroll if text is huge */
+            overflow: hidden; 
         }
         .big-text {
-            /* Fix for "G" hiding: Use clamp and ensure breaking if needed */
             font-size: clamp(2.5rem, 11vw, 7rem); 
             line-height: 1.1; 
             margin-bottom: 50px; 
             color: #fff;
             max-width: 100%;
-            word-wrap: break-word; /* Fallback */
-            overflow-wrap: break-word; /* Modern break */
+            word-wrap: break-word; 
         }
         
-        .footer-links {
-            display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 50px;
+        /* New Social Icon Styles */
+        .social-links {
+            display: flex; justify-content: center; gap: 20px; margin-bottom: 50px; flex-wrap: wrap;
         }
-        .footer-link {
-            color: var(--surface); text-decoration: none;
-            font-size: 1.5rem; font-weight: 900;
-            padding: 10px 20px; border: 2px solid transparent;
-            transition: 0.2s;
-            position: relative;
+        .social-btn {
+            width: 60px; height: 60px;
+            background: var(--surface); /* White */
+            color: var(--text); /* Black */
+            display: flex; align-items: center; justify-content: center;
+            border: 3px solid var(--surface); 
+            box-shadow: 6px 6px 0px var(--primary); /* Red Shadow */
+            transition: all 0.2s ease;
+            text-decoration: none;
         }
-        .footer-link::after {
-            content: ''; position: absolute; width: 0; height: 100%;
-            bottom: 0; left: 0; background: var(--surface); z-index: -1;
-            transition: 0.3s cubic-bezier(0.77, 0, 0.175, 1);
+        .social-btn:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 10px 10px 0px var(--caution); /* Yellow Shadow */
+            color: var(--accent); /* Blue Icon */
         }
-        .footer-link:hover { color: var(--text); }
-        .footer-link:hover::after { width: 100%; }
+        .social-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--caution);
+        }
 
         /* --- MOBILE QUERIES --- */
         @media (max-width: 900px) {
@@ -549,6 +618,7 @@
         <div class="close-menu interactable" onclick="toggleMenu()">✕</div>
         <a href="#hero" class="menu-link" onclick="toggleMenu()">ROOT</a>
         <a href="#about" class="menu-link" onclick="toggleMenu()">USER</a>
+        <a href="#services" class="menu-link" onclick="toggleMenu()">OFFERINGS</a>
         <a href="#work" class="menu-link" onclick="toggleMenu()">WORK</a>
         <a href="#contact" class="menu-link" onclick="toggleMenu()">MAIL</a>
     </div>
@@ -724,6 +794,56 @@
         </div>
     </section>
 
+    <!-- NEW SERVICES SECTION -->
+    <section id="services" class="section-padding container">
+        <h2 class="reveal" style="font-size: 3rem; margin-bottom: 20px;">OPERATIONS</h2>
+        <p class="reveal">DEPLOYMENT READY CAPABILITIES.</p>
+
+        <div class="services-grid reveal">
+            
+            <!-- Service 1 -->
+            <div class="service-card">
+                <div class="service-header">
+                    <i data-lucide="layers" class="service-icon" size="50"></i>
+                    <span class="service-num">01</span>
+                </div>
+                <h3 class="service-title">SYSTEM_ARCHITECTURE</h3>
+                <p>Constructing robust full-stack environments. Scalable logic for complex digital ecosystems using React and Node.</p>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card">
+                <div class="service-header">
+                    <i data-lucide="pen-tool" class="service-icon" size="50"></i>
+                    <span class="service-num">02</span>
+                </div>
+                <h3 class="service-title">INTERFACE_LABS</h3>
+                <p>Forging intuitive, brutalist, and highly accessible user experiences. From wireframe to final render.</p>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card">
+                <div class="service-header">
+                    <i data-lucide="zap" class="service-icon" size="50"></i>
+                    <span class="service-num">03</span>
+                </div>
+                <h3 class="service-title">VELOCITY_MODS</h3>
+                <p>High-octane performance optimization. Code refactoring, SEO boosting, and load-time reduction.</p>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card">
+                <div class="service-header">
+                    <i data-lucide="wand" class="service-icon" size="50"></i>
+                    <span class="service-num">04</span>
+                </div>
+                <h3 class="service-title">PIXEL_ALCHEMY</h3>
+                <p>Interactive visual experiments. WebGL, Three.js, and Canvas sorcery for immersive web motion.</p>
+            </div>
+
+        </div>
+    </section>
+
     <section id="work" class="section-padding container">
         <h2 class="reveal" style="font-size: 3rem; margin-bottom: 20px;">PROJECTS</h2>
         <p class="reveal">SELECTED WORKS FROM THE ARCHIVE.</p>
@@ -776,11 +896,25 @@
         <div class="container">
             <h2 class="big-text">LET'S BUILD<br><span style="-webkit-text-stroke: 2px #fff; color: transparent;">SOMETHING.</span></h2>
             
-            <div class="footer-links">
-                <a href="#" class="footer-link">GITHUB</a>
-                <a href="#" class="footer-link">LINKEDIN</a>
-                <a href="#" class="footer-link">EMAIL</a>
+            <div class="social-links">
+                <!-- Instagram -->
+                <a href="#" class="social-btn" aria-label="Instagram">
+                    <i data-lucide="instagram" size="30"></i>
+                </a>
+                <!-- YouTube -->
+                <a href="#" class="social-btn" aria-label="YouTube">
+                    <i data-lucide="youtube" size="30"></i>
+                </a>
+                <!-- GitHub -->
+                <a href="#" class="social-btn" aria-label="GitHub">
+                    <i data-lucide="github" size="30"></i>
+                </a>
+                <!-- LinkedIn -->
+                <a href="#" class="social-btn" aria-label="LinkedIn">
+                    <i data-lucide="linkedin" size="30"></i>
+                </a>
             </div>
+            
             <p style="color: #999; font-size: 0.8rem;">&copy; 2025 CODE WITH AYAAN. ALL RIGHTS RESERVED.</p>
         </div>
     </footer>
